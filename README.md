@@ -10,4 +10,4 @@ Current aims include:
 
 ## Code
 
-Because I am a novice programmer, I plan to use the basic Natural Language Tool Kit (NLTK) packages for python in this project. In the future, I hope to expand my skillset to other models: TextBlob, spacy. I also plan to use pandas & matplotlib to organize and visualize data.
+Because I am a novice programmer, I plan to use the basic Natural Language Tool Kit (NLTK) packages for python in this project. In the future, I hope to expand my skillset to other models: TextBlob, spaCy, Vader. I also plan to use pandas & matplotlib to organize and visualize data.
