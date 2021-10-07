@@ -11,7 +11,7 @@ nltk.download('averaged_perceptron_tagger')
 """
 
 # Opening and reading the file
-f = open('/Users/cdanza/Documents/Coding/The Hobbit NLP Project/TheHobbit.txt','r', encoding='utf8')
+f = open('/Users/cdanza/Documents/Coding/TheHobbitNLP/TheHobbit.txt','r', encoding='utf8')
 raw = f.read()
 
 

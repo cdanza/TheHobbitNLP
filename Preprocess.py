@@ -9,6 +9,8 @@ stopwords = nltk.corpus.stopwords.words('english')
 custom_stopwords = ['say', 'get', 'one', 'could', 'like']
 stopwords.extend(custom_stopwords)
 
+
+"""
 # Should fully preprocess, need to continue testing
 # Considering breaking into 4 separate functions
 def full_preprocess(file) -> list:
@@ -56,21 +58,28 @@ def full_preprocess(file) -> list:
     remove_stopwords = [word for word in wordtokenized2 if word not in stopwords]
 
     return remove_stopwords
+"""
 
 # -----------------------------------------------------------------------------------------------
 
-# Clean the corpus: remove punctuation, lowercase all words, remove stopwords
-def clean_file(file) -> list:
-    remove_punct = [word for word in file if word.isalnum()]
-    to_lowercase = [word.lower() for word in remove_punct]
-    remove_stopwords = [word for word in to_lowercase if word not in stopwords]
+# Each cleaning task separated by function
+def remove_punct(file) -> list:
+    r = [word for word in file if word.isalnum()]
     
-    return remove_stopwords
+    return r
 
+def to_lowercase(file) -> list:
+    l = [word.lower() for word in file]
+    
+    return l
 
-# File must be tokenized and cleaned already
-# Problem: this creates stopwords again after lemmatizing
-def lemmatizer(file):
+def remove_stopwords(file) -> list:
+    rs = [word for word in file if word not in stopwords]
+    
+    return rs
+
+def lemmatize(file):
+    
     # Pos tagger function
     def pos_tagger(nltk_tag):
     	if nltk_tag.startswith('J'):
@@ -97,9 +106,6 @@ def lemmatizer(file):
         if tag is None:
     		# If there is no available tag, append the token as is
             lemmatized_corpus.append(word)
-        # Custom code to force dwarves -> dwarf (35 cases stayed as dwarves without it)
-        elif word == "dwarves":
-            lemmatized_corpus.append("dwarf")
         else:	
     		# else use the tag to lemmatize the token
             lemmatized_corpus.append(wnl.lemmatize(word, tag))
